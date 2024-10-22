@@ -7,11 +7,11 @@ After=network.target
 Type=simple
 User=tomcat
 Group=tomcat
-Environment=CATALINA_HOME=/opt/tomcat
-Environment=CATALINA_BASE=/opt/tomcat
+Environment=CATALINA_HOME=var/lib/tomcat
+Environment=CATALINA_BASE=var/lib/tomcat
 Environment='JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64'
-ExecStart=/opt/tomcat/bin/startup.sh
-ExecStop=/opt/tomcat/bin/shutdown.sh
+ExecStart=var/lib/tomcat/bin/startup.sh
+ExecStop=var/lib/tomcat/bin/shutdown.sh
 RestartSec=10
 Restart=always
 
