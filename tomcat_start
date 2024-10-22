@@ -1,28 +1,19 @@
-   #!/bin/bash
-   #
-   # Tomcat init script
-   #
 
-   TOMCAT_HOME=/path/to/tomcat
-   JAVA_HOME=/path/to/java
+[Unit]
+Description=Apache Tomcat Web Application Container
+After=network.target
 
-   case "$1" in
-       start)
-           echo "Starting Tomcat..."
-           $TOMCAT_HOME/bin/startup.sh
-           ;;
-       stop)
-           echo "Stopping Tomcat..."
-           $TOMCAT_HOME/bin/shutdown.sh
-           ;;
-       restart)
-           echo "Restarting Tomcat..."
-           $TOMCAT_HOME/bin/shutdown.sh
-           $TOMCAT_HOME/bin/startup.sh
-           ;;
-       *)
-           echo "Usage: $0 {start|stop|restart}"
-           exit 1
-           ;;
-   esac
-   exit 0
+[Service]
+Type=simple
+User=tomcat
+Group=tomcat
+Environment=CATALINA_HOME=/opt/tomcat
+Environment=CATALINA_BASE=/opt/tomcat
+Environment='JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64'
+ExecStart=/opt/tomcat/bin/startup.sh
+ExecStop=/opt/tomcat/bin/shutdown.sh
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
