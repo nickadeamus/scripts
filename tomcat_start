@@ -1,0 +1,28 @@
+   #!/bin/bash
+   #
+   # Tomcat init script
+   #
+
+   TOMCAT_HOME=/path/to/tomcat
+   JAVA_HOME=/path/to/java
+
+   case "$1" in
+       start)
+           echo "Starting Tomcat..."
+           $TOMCAT_HOME/bin/startup.sh
+           ;;
+       stop)
+           echo "Stopping Tomcat..."
+           $TOMCAT_HOME/bin/shutdown.sh
+           ;;
+       restart)
+           echo "Restarting Tomcat..."
+           $TOMCAT_HOME/bin/shutdown.sh
+           $TOMCAT_HOME/bin/startup.sh
+           ;;
+       *)
+           echo "Usage: $0 {start|stop|restart}"
+           exit 1
+           ;;
+   esac
+   exit 0
