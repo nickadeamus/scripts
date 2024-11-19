@@ -2,7 +2,7 @@ import subprocess
 
 # List of packages you want to install
 packages = [
-    'java'
+    'java',
     'cairo-devel',
     'libjpeg-turbo-devel',
     'libpng-devel',
